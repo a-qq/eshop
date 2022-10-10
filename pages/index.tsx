@@ -1,6 +1,6 @@
 import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
 import { Main } from "../components/Main";
+import { Navbar } from "../components/Navbar";
 import { Product } from "../components/Product";
 
 const DATA = {
@@ -18,8 +18,8 @@ const DATA = {
 
 const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-teal-100">
-      <Header />
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
       <Main>
         <Product data={DATA} />
       </Main>

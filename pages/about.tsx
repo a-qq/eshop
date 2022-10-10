@@ -1,11 +1,11 @@
 import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
 import { Main } from "../components/Main";
+import { Navbar } from "../components/Navbar";
 
 const AboutPage = () => {
     return (
         <div>
-            <Header/>
+            <Navbar/>
             <Main>About aqq</Main>
             <Footer/>
         </div>
