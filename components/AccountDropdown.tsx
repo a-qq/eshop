@@ -1,4 +1,6 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "./NavLink";
 
 export const AccountDropdown = ({ className = "" }) => {
   const [open, setOpen] = useState(false);
@@ -37,24 +39,25 @@ export const AccountDropdown = ({ className = "" }) => {
             className="fixed inset-0 h-full w-full cursor-default"
           ></button>
           <div className="absolute right-0 mt-2 py-2 w-24 bg-white rounded-lg shadow-xl">
-            <a
-              href="#"
+            <NavLink
+              href="/settings"
+              activeClassName="bg-indigo-400"
               className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900"
             >
               Settings
-            </a>
-            <a
-              href="#"
+            </NavLink>
+            <NavLink
+              href="/#"
+              activeClassName="bg-indigo-400"
               className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900"
             >
               Support
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900"
-            >
-              Sign out
-            </a>
+            </NavLink>
+            <Link href="/#">
+              <a className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900">
+                Sign out
+              </a>
+            </Link>
           </div>
         </>
       ) : null}
