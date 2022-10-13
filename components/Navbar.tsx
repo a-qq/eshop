@@ -8,7 +8,7 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="bg-gray-800 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+    <header className="bg-gray-800 sm:flex sm:justify-between sm:items-center sm:px-6 lg:px-8 sm:py-3">
       <div className="flex items-center justify-between px-4 py-3 sm:p-0">
         <div>
           <img className="h-8" src="/aqq_logo.svg" alt="a-qq logo" />
