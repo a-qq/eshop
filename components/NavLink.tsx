@@ -11,7 +11,7 @@ interface NavLinkProps {
   className?: string;
 }
 
-const classNames = (...classes: any[]) => classes.filter(Boolean).join(" ");
+const classNames = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export const NavLink = ({
   href,
