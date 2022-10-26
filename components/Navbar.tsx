@@ -55,12 +55,12 @@ export const Navbar = () => {
             CSR
           </NavLink>
           <NavLink
-            href="/#"
+            href="/productsSSG/1"
             activeClassName="bg-gray-900 text-white"
             notActiveClassName="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
-            Other
+            SSG
           </NavLink>
           <AccountDropdown className="hidden sm:block sm:ml-6" />
         </div>
