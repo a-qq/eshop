@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { ProductDetails } from "./ProductDetails";
-
+import Image from "next/image"
 
 type ProductCardProps = Pick<
   ProductDetails,
@@ -22,11 +22,12 @@ export const ProductCard = ({
     <Link href={href}>
       <a>
         <div className="bg-white border rounded-lg overflow-hidden shadow-xl p-6">
-          <div className="min-h-80 aspect-w-1 aspect-h-1 w-full group-hover:opacity-75 sm:aspect-none sm:h-96 p">
-            <img
+          <div className="relative h-80 aspect-w-1 aspect-h-1 w-full group-hover:opacity-75 sm:aspect-none sm:h-96">
+            <Image
               className="h-full w-full object-contain object-center"
               src={imageUrl}
               alt={imageAlt}
+              layout="fill"
             />
           </div>
           <div className="mt-6">

@@ -1,4 +1,5 @@
 import { StarIcon } from "@heroicons/react/24/solid";
+import Image from "next/image"
 
 export interface ProductDetails {
   id: number;
@@ -25,35 +26,50 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8">
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 ">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-lg border-1 py-4">
-            <img
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-xl rounded-2xl border-1 py-4">
+            <Image
               alt={data.imageAlt}
               src={data.imageUrl}
-              className="aspect-square w-full rounded-xl object-contain"
+              layout="responsive"
+              width={1}
+              height={1}
+              className="w-full rounded-xl object-contain"
             />
 
             <div className="grid grid-cols-2 gap-4  lg:mt-4">
-              <img
+              <Image
                 alt={data.imageAlt}
                 src={data.imageUrl}
+                layout="responsive"
+                width={1}
+                height={1}
                 className="aspect-square w-full rounded-xl object-contain"
               />
 
-              <img
+              <Image
                 alt={data.imageAlt}
                 src={data.imageUrl}
+                layout="responsive"
+                width={1}
+                height={1}
                 className="aspect-square w-full rounded-xl object-contain"
               />
 
-              <img
+              <Image
                 alt={data.imageAlt}
                 src={data.imageUrl}
+                layout="responsive"
+                width={1}
+                height={1}
                 className="aspect-square w-full rounded-xl object-contain"
               />
 
-              <img
+              <Image
                 alt={data.imageAlt}
                 src={data.imageUrl}
+                layout="responsive"
+                width={1}
+                height={1}
                 className="aspect-square w-full rounded-xl object-contain"
               />
             </div>
