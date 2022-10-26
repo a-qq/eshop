@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AccountDropdown } from "./AccountDropdown";
 import { NavLink } from "./NavLink";
-
+import Image from "next/image";
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
 
@@ -72,13 +72,18 @@ export const Navbar = () => {
           </NavLink>
           <AccountDropdown className="hidden sm:block sm:ml-6" />
         </div>
-        <div className="px-4 py-4 border-t border-gray-800 sm:hidden">
+        <div className="px-4 py-5 border-t border-gray-600 sm:hidden">
           <div className="flex items-center">
-            <img
-              className="h-8 w-8 border-2 border-gray-600 rounded-full object-cover"
-              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-              alt="Your avatar"
-            />
+            <div className="border-2 border-gray-600 rounded-full w-8 h-8">
+              <Image
+                className="object-cover rounded-full"
+                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                alt="Your avatar"
+                layout="responsive"
+                width={32}
+                height={32}
+              />
+            </div>
             <span className="ml-3 font-semibold text-white">Adam Kowalski</span>
           </div>
           <div className="mt-4">
@@ -94,7 +99,7 @@ export const Navbar = () => {
               href="/#"
               activeClassName="text-gray-100"
               notActiveClassName="text-gray-400"
-              className="mt-2 block text-gray-400 hover:text-white"
+              className="mt-2 block hover:text-white"
             >
               Support
             </NavLink>
