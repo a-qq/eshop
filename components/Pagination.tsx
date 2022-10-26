@@ -55,7 +55,7 @@ export const Pagination = ({ pageSize, total }: PaginationProps) => {
               {itemsShown - pageSize + 1}{" "}
             </span>
             to
-            <span className="font-medium"> {itemsShown} </span> of
+            <span className="font-medium"> {itemsShown > total ? total : itemsShown} </span> of
             <span className="font-medium"> {total} </span> results
           </p>
         </div>

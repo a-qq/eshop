@@ -62,6 +62,14 @@ export const Navbar = () => {
           >
             SSG
           </NavLink>
+          <NavLink
+            href="/productsISR/1"
+            activeClassName="bg-gray-900 text-white"
+            notActiveClassName="text-gray-100"
+            className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
+          >
+            ISR
+          </NavLink>
           <AccountDropdown className="hidden sm:block sm:ml-6" />
         </div>
         <div className="px-4 py-4 border-t border-gray-800 sm:hidden">
