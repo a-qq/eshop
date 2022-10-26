@@ -47,12 +47,12 @@ export const Navbar = () => {
             About
           </NavLink>
           <NavLink
-            href="/#"
+            href="/productsCSR"
             activeClassName="bg-gray-900 text-white"
             notActiveClassName="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
-            Collections
+            CSR
           </NavLink>
           <NavLink
             href="/#"
