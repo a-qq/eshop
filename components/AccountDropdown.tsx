@@ -43,20 +43,20 @@ export const AccountDropdown = ({ className = "" }) => {
           <div className="absolute right-0 mt-2 py-2 w-24 bg-white rounded-lg shadow-xl">
             <NavLink
               href="/settings"
-              activeClassName="bg-indigo-400"
-              className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900"
+              active="bg-indigo-400"
+              className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-gray-900"
             >
               Settings
             </NavLink>
             <NavLink
               href="/#"
-              activeClassName="bg-indigo-400"
-              className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900"
+              active="bg-indigo-400"
+              className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-gray-900"
             >
               Support
             </NavLink>
             <Link href="/#">
-              <a className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-text-gray-900">
+              <a className="block px-4 py-2 text-gray-800 hover:bg-indigo-300 hover:text-gray-900">
                 Sign out
               </a>
             </Link>

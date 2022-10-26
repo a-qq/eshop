@@ -6,8 +6,8 @@ interface NavLinkProps {
   href: string;
   exact?: boolean;
   children: ReactText;
-  activeClassName: string;
-  notActiveClassName?: string;
+  active: string;
+  inactive?: string;
   className?: string;
 }
 
@@ -17,21 +17,22 @@ export const NavLink = ({
   href,
   exact = false,
   children,
-  activeClassName,
-  notActiveClassName,
+  active,
+  inactive,
   className,
   ...props
 }: NavLinkProps) => {
-  const { pathname } = useRouter();
-  const isActive = exact ? pathname === href : pathname.startsWith(href);
+  const { asPath } = useRouter();
+  const pathToCompare = exact ? asPath : stripQueryAndFragment(asPath);
+  const hrefToCompare = exact ? href : stripQueryAndFragment(href);
+  const isActive =
+    addTrailingSlash(pathToCompare) === addTrailingSlash(hrefToCompare);
 
   return (
     <Link href={href}>
       <a
         className={classNames(
-          isActive
-            ? activeClassName + " " + className
-            : notActiveClassName + " " + className
+          isActive ? active + " " + className : inactive + " " + className
         )}
         {...props}
       >
@@ -40,3 +41,7 @@ export const NavLink = ({
     </Link>
   );
 };
+
+const stripQueryAndFragment = (path: string) => path.split("?")[0];
+const addTrailingSlash = (path: string) =>
+  path.endsWith("/") ? path : path + "/";

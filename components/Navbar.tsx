@@ -32,40 +32,40 @@ export const Navbar = () => {
           <NavLink
             href="/"
             exact={true}
-            activeClassName="bg-gray-900 text-white"
-            notActiveClassName="text-gray-100"
+            active="bg-gray-900 text-white"
+            inactive="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
             Home
           </NavLink>
           <NavLink
             href="/about"
-            activeClassName="bg-gray-900 text-white"
-            notActiveClassName="text-gray-100"
+            active="bg-gray-900 text-white"
+            inactive="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
             About
           </NavLink>
           <NavLink
             href="/productsCSR"
-            activeClassName="bg-gray-900 text-white"
-            notActiveClassName="text-gray-100"
+            active="bg-gray-900 text-white"
+            inactive="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
             CSR
           </NavLink>
           <NavLink
             href="/productsSSG/1"
-            activeClassName="bg-gray-900 text-white"
-            notActiveClassName="text-gray-100"
+            active="bg-gray-900 text-white"
+            inactive="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
             SSG
           </NavLink>
           <NavLink
             href="/productsISR/1"
-            activeClassName="bg-gray-900 text-white"
-            notActiveClassName="text-gray-100"
+            active="bg-gray-900 text-white"
+            inactive="text-gray-100"
             className="mt-1 block font-semibold rounded px-2 py-1 hover:bg-gray-700 sm:mt-0 sm:ml-2"
           >
             ISR
@@ -89,16 +89,16 @@ export const Navbar = () => {
           <div className="mt-4">
             <NavLink
               href="/settings"
-              activeClassName="text-gray-200"
-              notActiveClassName="text-gray-400"
+              active="text-gray-200"
+              inactive="text-gray-400"
               className="block hover:text-white"
             >
               Settings
             </NavLink>
             <NavLink
               href="/#"
-              activeClassName="text-gray-100"
-              notActiveClassName="text-gray-400"
+              active="text-gray-100"
+              inactive="text-gray-400"
               className="mt-2 block hover:text-white"
             >
               Support
