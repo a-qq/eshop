@@ -28,7 +28,6 @@ export const ProductCard = ({
               src={imageUrl}
               alt={imageAlt}
               layout="fill"
-              placeholder="blur"
             />
           </div>
           <div className="mt-6">
