@@ -1,5 +1,6 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image"
+import { ProductsLayout } from "./ProductsLayout";
 
 export interface ProductDetails {
   id: number;
@@ -23,8 +24,7 @@ interface ProductDetailsProps {
 export const ProductDetails = ({ data }: ProductDetailsProps) => {
   const isBestSeller = data.rating.count >= 500 && data.rating.rate >= 3.0;
   return (
-    <section>
-      <div className="relative mx-auto max-w-screen-xl px-4 py-8">
+    <ProductsLayout>
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 ">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-xl rounded-2xl border-1 py-4">
             <Image
@@ -161,7 +161,6 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
             </form>
           </div>
         </div>
-      </div>
-    </section>
+    </ProductsLayout>
   );
 };

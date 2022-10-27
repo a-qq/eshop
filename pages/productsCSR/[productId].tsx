@@ -14,28 +14,26 @@ const ProductIdPage = () => {
     () => getProduct(productId)
   );
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return "Loading...";
 
   if (!data || error) {
     return <div>Something went wrong!</div>;
   }
 
   return (
-    <>
-      <ProductDetails
-        data={{
-          id: data.id,
-          title: data.title,
-          price: data.price.toString(),
-          category: data.category,
-          description: data.description,
-          imageUrl: data.image,
-          imageAlt: data.title,
-          rating: data.rating,
-          longDescription: data.longDescription,
-        }}
-      />
-    </>
+    <ProductDetails
+      data={{
+        id: data.id,
+        title: data.title,
+        price: data.price.toString(),
+        category: data.category,
+        description: data.description,
+        imageUrl: data.image,
+        imageAlt: data.title,
+        rating: data.rating,
+        longDescription: data.longDescription,
+      }}
+    />
   );
 };
 

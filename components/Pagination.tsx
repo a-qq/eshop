@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 interface PaginationProps {
   pageSize: number;
   total: number;
+  className?: string 
 }
 
 export const usePagination = () => {
@@ -24,7 +25,7 @@ export const usePagination = () => {
   return { pageNumber, getPageHref };
 };
 
-export const Pagination = ({ pageSize, total }: PaginationProps) => {
+export const Pagination = ({ pageSize, total, className="" }: PaginationProps) => {
   const { pageNumber, getPageHref } = usePagination();
   const totalPageNumber = Math.ceil(total / pageSize);
   const prev = pageNumber - 1;
@@ -33,7 +34,7 @@ export const Pagination = ({ pageSize, total }: PaginationProps) => {
   const nextHref = getPageHref(next);
   const itemsShown = pageNumber * pageSize;
   return (
-    <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+    <div className={`flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-3 sm:px-6 ${className}`}>
       <div className="flex flex-1 justify-between sm:hidden">
         <Link href={prevHref}>
           <a className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
