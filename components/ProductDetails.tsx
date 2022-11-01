@@ -1,6 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ProductsLayout } from "./ProductsLayout";
+import { NextSeo } from "next-seo";
 import { ReactElement } from "react";
 import { MarkdownCsrProps } from "./MarkdownCsr";
 import { MarkdownStaticProps } from "./MarkdownStatic";
@@ -28,6 +29,21 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
   const isBestSeller = data.rating.count >= 500 && data.rating.rate >= 3.0;
   return (
     <ProductsLayout>
+      <NextSeo
+        title={data.title}
+        description={data.description}
+        openGraph={{
+          title: data.title,
+          description: data.description,
+          images: [
+            {
+              url: data.imageUrl,
+              alt: data.imageAlt,
+              type: "image/jpeg",
+            },
+          ],
+        }}
+      />
       <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 ">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-xl rounded-2xl border-1 py-4">
           <Image
