@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { getProduct } from "../../apis/getProducts";
 import { ProductDetails } from "../../components/ProductDetails";
+import { MarkdownCsr } from "../../components/MarkdownCsr";
 
 const ProductIdPage = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const ProductIdPage = () => {
         imageUrl: data.image,
         imageAlt: data.title,
         rating: data.rating,
-        longDescription: data.longDescription,
+        longDescription: <MarkdownCsr>{data.longDescription}</MarkdownCsr>,
       }}
     />
   );

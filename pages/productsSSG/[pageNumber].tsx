@@ -2,7 +2,7 @@ import { GetStaticPropsContext, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import { getProducts } from "../../apis/getProducts";
 import { ProductList } from "../../components/ProductList";
-import { InferGetStaticPaths } from "../../types/InferGetStaticPath";
+import { InferGetStaticPaths } from "../../types";
 
 const PAGE_SIZE = 24;
 const TOTAL_PAGES = 10;
