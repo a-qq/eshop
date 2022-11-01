@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { StoreApiResponse } from "../apis/getProducts";
+import { LoadingSpinner } from "./LoadingSpinner";
 import { Pagination } from "./Pagination";
 import { ProductCard } from "./ProductCard";
 import { ProductsLayout } from "./ProductsLayout";
@@ -21,6 +23,7 @@ export const ProductList = ({
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">
         Currently available products:
       </h2>
+      <Suspense fallback={<LoadingSpinner />}>
         <ul className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => {
             return (
@@ -38,6 +41,7 @@ export const ProductList = ({
             );
           })}
         </ul>
+      </Suspense>
       <Pagination
         pageSize={pageSize}
         total={totalCount}
