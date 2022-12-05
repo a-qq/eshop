@@ -40,7 +40,7 @@ export const getStaticPaths = async () => {
     paths: data.map((product) => {
       return {
         params: {
-          productId: product.id.toString(),
+          productId: product.id,
         },
       };
     }),
@@ -51,14 +51,14 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<InferGetStaticPaths<typeof getStaticPaths>>) => {
-  if (!params?.productId || !Number.parseInt(params.productId)) {
+  if (!params?.productId) {
     return {
       props: {},
       notFound: true,
     };
   }
 
-  const data = await getProduct(+params.productId);
+  const data = await getProduct(params.productId);
 
   if (!data) {
     return {

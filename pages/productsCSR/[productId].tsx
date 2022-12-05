@@ -8,10 +8,7 @@ import { Suspense } from "react";
 
 const ProductIdPage = () => {
   const router = useRouter();
-  const productId =
-    (router.query.productId &&
-      Number.parseInt(router.query.productId.toString())) ||
-    0;
+  const productId = (router.query.productId && router.query.productId.toString()) ?? "";
   const { data, error } = useQuery(
     ["products", "details", productId],
     () => getProduct(productId),

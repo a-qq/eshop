@@ -7,7 +7,7 @@ import { MarkdownCsrProps } from "./MarkdownCsr";
 import { MarkdownStaticProps } from "./MarkdownStatic";
 
 export interface ProductDetails {
-  id: number;
+  id: string;
   title: string;
   price: string;
   description: string;

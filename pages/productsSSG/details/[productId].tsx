@@ -4,6 +4,7 @@ import { ProductDetails } from "../../../components/ProductDetails";
 import { InferGetStaticPaths } from "../../../types";
 import { serialize } from "next-mdx-remote/serialize";
 import { MarkdownStatic } from "../../../components/MarkdownStatic";
+import { checkIfValidUUID } from "../../../utils";
 
 const ProductIdPage = ({
   data,
@@ -57,7 +58,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const data = await getProduct(+params.productId);
+  const data = await getProduct(params.productId);
 
   if (!data) {
     return {
