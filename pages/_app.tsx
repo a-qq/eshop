@@ -5,6 +5,7 @@ import { Layout } from "../components/Layout";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";
 import { useRouter } from "next/router";
+import { CartContextProvider } from "../components/cart/CartContext";
 
 const client = new QueryClient();
 
@@ -18,12 +19,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const url = (APP_URL + router.asPath).split("?")[0];
   return (
-    <Layout>
-      <DefaultSeo {...SEO} canonical={url} openGraph={{ url: url }} />
-      <QueryClientProvider client={client}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
-    </Layout>
+    <CartContextProvider>
+      <Layout>
+        <DefaultSeo {...SEO} canonical={url} openGraph={{ url: url }} />
+        <QueryClientProvider client={client}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </Layout>
+    </CartContextProvider>
   );
 }
 

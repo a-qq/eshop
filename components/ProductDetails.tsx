@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import { ReactElement } from "react";
 import { MarkdownCsrProps } from "./MarkdownCsr";
 import { MarkdownStaticProps } from "./MarkdownStatic";
+import { useCart } from "./cart/CartContext";
 
 export interface ProductDetails {
   id: string;
@@ -18,7 +19,9 @@ export interface ProductDetails {
     rate: number;
     count: number;
   };
-  longDescription: ReactElement<MarkdownCsrProps> | ReactElement<MarkdownStaticProps>;
+  longDescription:
+    | ReactElement<MarkdownCsrProps>
+    | ReactElement<MarkdownStaticProps>;
 }
 
 interface ProductDetailsProps {
@@ -26,6 +29,7 @@ interface ProductDetailsProps {
 }
 
 export const ProductDetails = ({ data }: ProductDetailsProps) => {
+  const cart = useCart();
   const isBestSeller = data.rating.count >= 500 && data.rating.rate >= 3.0;
   return (
     <ProductsLayout>
@@ -166,6 +170,7 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
                   id="quantity"
                   min="1"
                   defaultValue="1"
+                  disabled //untill switch to graphql e-commerce demo
                   className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                 />
               </div>
@@ -173,6 +178,14 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
               <button
                 type="submit"
                 className="ml-3 block rounded bg-green-600 px-5 py-2 font-semibold text-gray-100 hover:bg-green-500"
+                onClick={() =>
+                  cart.addItem({
+                    id: data.id,
+                    price: Number.parseFloat(data.price),
+                    title: data.title,
+                    quantity: 1,
+                  })
+                }
               >
                 Add to Cart
               </button>
