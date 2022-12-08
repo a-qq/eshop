@@ -1,4 +1,4 @@
-import { CartItem } from "../components/cart/CartItem";
+import { CartItem } from "../components/cart/CartProduct";
 import { CartKey } from "../utils";
 
 export const setCartItemsInLocalStorage = (cartItems: CartItem[]) => {

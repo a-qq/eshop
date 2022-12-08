@@ -81,8 +81,8 @@ export const Navbar = () => {
             Cart
           </NavLink>
 
-          <CartIcon className="ml-6 hidden sm:flex" />
-          <AccountDropdown className="hidden sm:block sm:ml-4" />
+          <CartIcon className="hidden sm:block sm:top-1 sm:ml-6" />
+          <AccountDropdown className="hidden sm:block sm:ml-3" />
         </div>
 
         <div className="px-4 py-5 border-t border-gray-600 sm:hidden">

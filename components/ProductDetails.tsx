@@ -184,6 +184,7 @@ export const ProductDetails = ({ data }: ProductDetailsProps) => {
                     price: Number.parseFloat(data.price),
                     title: data.title,
                     quantity: 1,
+                    imageUrl: data.imageUrl,
                   })
                 }
               >
