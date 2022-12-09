@@ -1,5 +1,7 @@
+import { checkIfValidUUID } from "../utils";
+
 interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   description: string;
@@ -27,10 +29,11 @@ export const getProducts = async (
   return data;
 };
 
-export const getProduct = async (id: number) => {
-  if(id < 1 || Number.isNaN(id))
-    return null
-    
+export const getProduct = async (id: string) => {
+  if (!checkIfValidUUID(id)) {
+    return null;
+  }
+  
   const res = await fetch(
     `https://naszsklep-api.vercel.app/api/products/${id}`
   );
@@ -39,7 +42,7 @@ export const getProduct = async (id: number) => {
   const resAsText = await res.text();
   const data: Product | null = resAsText ? JSON.parse(resAsText) : null;
   return data;
-}; 
+};
 
 export const getProductsCount = async () => {
   const OFFSET = 500;

@@ -11,7 +11,7 @@ const ProductsCSRPage = () => {
   const PAGE_SIZE = 24;
   const TOTAL_PRODUCT_COUNT = 240;
   const router = useRouter();
-  const { data, error, isLoading } = useQuery(
+  const { data, error } = useQuery(
     ["products", "list", pageNumber],
     () => getProducts(pageNumber, PAGE_SIZE),
     { suspense: true, enabled: !overAssumedValue }
@@ -22,7 +22,6 @@ const ProductsCSRPage = () => {
   if (!data || error) {
     return <div>Something went wrong</div>;
   }
-  if (isLoading) return <div>Loading...</div>;
 
   const detailsPath = router.pathname;
 

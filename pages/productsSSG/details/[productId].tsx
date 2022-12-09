@@ -1,7 +1,10 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { getProduct, getProducts } from "../../../apis/getProducts";
 import { ProductDetails } from "../../../components/ProductDetails";
-import { InferGetStaticPaths } from "../../../types/InferGetStaticPath";
+import { InferGetStaticPaths } from "../../../types";
+import { serialize } from "next-mdx-remote/serialize";
+import { MarkdownStatic } from "../../../components/MarkdownStatic";
+import { checkIfValidUUID } from "../../../utils";
 
 const ProductIdPage = ({
   data,
@@ -21,7 +24,9 @@ const ProductIdPage = ({
         imageUrl: data.image,
         imageAlt: data.title,
         rating: data.rating,
-        longDescription: data.longDescription,
+        longDescription: (
+          <MarkdownStatic>{data.longDescription}</MarkdownStatic>
+        ),
       }}
     />
   );
@@ -53,11 +58,22 @@ export const getStaticProps = async ({
     };
   }
 
-  const data = await getProduct(+params.productId);
+  const data = await getProduct(params.productId);
+
+  if (!data) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      data,
+      data: {
+        ...data,
+        longDescription: await serialize(data.longDescription),
+      },
     },
+    revalidate: 60,
   };
 };
