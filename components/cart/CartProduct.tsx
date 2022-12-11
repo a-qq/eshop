@@ -49,6 +49,7 @@ const CartProduct = ({ item, ...rest }: { item: CartItem }) => {
     }
     // TODO: currently not including quantity in deps is intended, but we should
     // do this differently as it could break easily
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item.quantity]);
 
   console.log(removing);
@@ -84,7 +85,7 @@ const CartProduct = ({ item, ...rest }: { item: CartItem }) => {
           </Link>
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{price} $</span>
+          <span>{price / 100} $</span>
         </div>
       </div>
       <Quantity

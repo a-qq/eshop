@@ -1,0 +1,84 @@
+query GetProductsIds {
+  products(first: 100) {
+    id
+  }
+}
+
+query GetProductDetailsById($id: ID) {
+  product(where: { id: $id }) {
+    id
+    name
+    price
+    description
+    categories {
+      id
+      name
+    }
+    collections {
+      id
+      slug
+      name
+      description
+    }
+    reviews {
+      id
+      content
+      headline
+      name
+      rating
+    }
+    collections {
+      id
+      name
+      description
+    }
+    images {
+      id
+      height
+      width
+      url
+      mimeType
+    }
+  }
+}
+
+query GetProductsCount {
+  productsConnection {
+    aggregate {
+      count
+    }
+  }
+}
+
+query GetProductPage($limit: Int!, $offset: Int!) {
+  productsConnection(first: $limit, skip: $offset) {
+    products: edges {
+      node {
+        id
+        slug
+        name
+        price
+        categories {
+          id
+          name
+        }
+        collections {
+          id
+          name
+        }
+        reviews {
+          id
+          rating
+        }
+        images(first: 1) {
+          url
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      pageSize
+    }
+  }
+}

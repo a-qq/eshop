@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   trailingSlash: true,
   images: {
-    domains: ["naszsklep-api.vercel.app", "images.unsplash.com"],
+    domains: ["naszsklep-api.vercel.app", "images.unsplash.com", "media.graphassets.com"],
     formats: ["image/avif", "image/webp"]
   },
 };

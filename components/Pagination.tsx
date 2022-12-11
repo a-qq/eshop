@@ -48,7 +48,7 @@ export const Pagination = ({ pageSize, total, className="" }: PaginationProps) =
         </Link>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-center md:justify-between">
-        <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <p className="text-sm text-gray-700">
             Showing
             <span className="font-medium">

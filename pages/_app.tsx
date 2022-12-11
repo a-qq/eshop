@@ -6,8 +6,10 @@ import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";
 import { useRouter } from "next/router";
 import { CartContextProvider } from "../components/cart/CartContext";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "../graphql/apolloClient";
 
-const client = new QueryClient();
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -19,14 +21,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const url = (APP_URL + router.asPath).split("?")[0];
   return (
-    <CartContextProvider>
-      <Layout>
-        <DefaultSeo {...SEO} canonical={url} openGraph={{ url: url }} />
-        <QueryClientProvider client={client}>
-          <Component {...pageProps} />
-        </QueryClientProvider>
-      </Layout>
-    </CartContextProvider>
+    <ApolloProvider client={apolloClient}>
+      <CartContextProvider>
+        <Layout>
+          <DefaultSeo {...SEO} canonical={url} openGraph={{ url: url }} />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+          </QueryClientProvider>
+        </Layout>
+      </CartContextProvider>
+    </ApolloProvider>
   );
 }
 

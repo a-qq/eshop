@@ -1,13 +1,12 @@
 import { Suspense } from "react";
-import { StoreApiResponse } from "../apis/getProducts";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { Pagination } from "./Pagination";
-import { ProductCard } from "./ProductCard";
+import { ProductCard, ProductListItem } from "./ProductCard";
 import { ProductsLayout } from "./ProductsLayout";
 
 interface ProductListProps {
-  products: StoreApiResponse;
-  totalCount: number;
+  products: ProductListItem[];
+  totalProductCount: number;
   pageSize: number;
   detailsPath: string;
 }
@@ -15,9 +14,10 @@ interface ProductListProps {
 export const ProductList = ({
   products,
   pageSize,
-  totalCount,
-  detailsPath: detailsHref
+  totalProductCount,
+  detailsPath: detailsHref,
 }: ProductListProps) => {
+  const renderPagination = pageSize < totalProductCount;
   return (
     <ProductsLayout>
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">
@@ -29,12 +29,7 @@ export const ProductList = ({
             return (
               <li key={product.id} className="group relative">
                 <ProductCard
-                  title={product.title}
-                  price={product.price.toString()}
-                  category={product.category}
-                  imageUrl={product.image}
-                  imageAlt={product.title}
-                  rating={product.rating}
+                  {...product}
                   href={`${detailsHref}/${product.id}`}
                 />
               </li>
@@ -42,11 +37,13 @@ export const ProductList = ({
           })}
         </ul>
       </Suspense>
-      <Pagination
-        pageSize={pageSize}
-        total={totalCount}
-        className="sticky mt-8 shadow-md rounded-lg bottom-0"
-      />
+      {renderPagination && (
+        <Pagination
+          pageSize={pageSize}
+          total={totalProductCount}
+          className="sticky mt-8 shadow-md rounded-lg bottom-0"
+        />
+      )}
     </ProductsLayout>
   );
 };
