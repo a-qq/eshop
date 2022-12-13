@@ -60,7 +60,7 @@ export const ProductCard = ({
               {name}
             </h4>
             <div className="mt-2">${price / 100}</div>
-            {rating && (
+            {!!rating ? (
               <div className="mt-2 flex items-center">
                 {Array(5)
                   .fill(1)
@@ -80,7 +80,7 @@ export const ProductCard = ({
                   {rating.count} reviews
                 </span>
               </div>
-            )}
+            ): (<div className="h-7 hidden md:flex"></div>)}
           </div>
         </div>
       </a>

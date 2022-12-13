@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { Pagination } from "./Pagination";
 import { ProductCard, ProductListItem } from "./ProductCard";
-import { ProductsLayout } from "./ProductsLayout";
 
 interface ProductListProps {
   products: ProductListItem[];
@@ -19,7 +18,7 @@ export const ProductList = ({
 }: ProductListProps) => {
   const renderPagination = pageSize < totalProductCount;
   return (
-    <ProductsLayout>
+    <>
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">
         Currently available products:
       </h2>
@@ -44,6 +43,6 @@ export const ProductList = ({
           className="sticky mt-8 shadow-md rounded-lg bottom-0"
         />
       )}
-    </ProductsLayout>
+    </>
   );
 };

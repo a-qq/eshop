@@ -31,9 +31,9 @@ const Quantity = ({
       >
         <Cross className="h-5 w-5" />
       </button>
-      <label className="w-full border-gray-700 border ml-2">
+      <label className="w-full  ml-2">
         <input
-          className="bg-transparent px-4 w-full h-full focus:outline-none select-none pointer-events-auto"
+          className="bg-transparent border border-gray-700 px-4 w-full h-full focus:outline-none select-none pointer-events-auto"
           onChange={(e) =>
             Number(e.target.value) < max + 1 ? handleChange(e) : () => {}
           }

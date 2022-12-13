@@ -24,6 +24,7 @@ const ProductsISRPage = ({
 
   const detailsPath =
     router.pathname.slice(0, router.pathname.indexOf("/", 1)) + "/details";
+    console.log(detailsPath);
   const products = data.productsConnection.products.map((p) => {
     return {
       id: p.node.id,

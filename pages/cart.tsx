@@ -6,12 +6,13 @@ import Link from "next/link";
 const calcPrice = (total: number, item: CartItem) =>
   total + item.quantity * item.price;
 
-const Cart = () => {
+const CartPage = () => {
   const { items, isLoading, total } = useCart();
   const isEmpty = items.length < 1;
   const subTotal = total;
+
   return (
-    <div className="grid lg:grid-cols-12 pt-4 gap-20 mx-auto max-w-7xl px-6 w-full">
+    <div className="grid lg:grid-cols-12 gap-20 mx-auto max-w-7xl w-full">
       <div className="lg:col-span-7">
         {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
@@ -37,7 +38,7 @@ const Cart = () => {
             <h2 className="pt-1 pb-2 text-2xl font-bold tracking-wide cursor-pointer mb-2">
               Review your Order
             </h2>
-            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-gray-700 border-b border-gray-700 bg-gray-50 px-4 last:border-0 rounded-md shadow-md">
+            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-gray-400 bg-gray-50 px-4 last:border-0 rounded-md shadow-md">
               {items.map((item) => (
                 <CartProduct key={item.id} item={item} />
               ))}
@@ -51,7 +52,7 @@ const Cart = () => {
             <ul className="py-3 border-t border-gray-700">
               <li className="flex justify-between py-1">
                 <span>Subtotal</span>
-                <span>{subTotal} $</span>
+                <span>{subTotal/100} $</span>
               </li>
               <li className="flex justify-between py-1">
                 <span>Taxes</span>
@@ -64,13 +65,13 @@ const Cart = () => {
             </ul>
             <div className="flex justify-between border-t border-gray-700 py-3 font-bold pb-10">
               <span>Total</span>
-              <span>{total} $</span>
+              <span>{total/100} $</span>
             </div>
           </div>
           <div className="flex flex-row justify-end bg-gray-50 rounded-b-sm pb-4 px-4 shadow-md">
             <div className="w-full lg:w-72">
               {isEmpty ? (
-                <Link href="/products/ISR/1">
+                <Link href="/products/1">
                   <a className="min-w-full bg-indigo-700 text-gray-300 cursor-pointer inline-flex px-10 py-5 leading-6 transition ease-in-out duration-150 shadow-sm text-center justify-center uppercase border border-transparent items-center text-sm font-semibold tracking-wide hover:border-indigo-700 hover:bg-indigo-600 hover:text-white">
                     Continue Shopping
                   </a>
@@ -90,4 +91,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;

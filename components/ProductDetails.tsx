@@ -1,6 +1,5 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { ProductsLayout } from "./ProductsLayout";
 import { NextSeo } from "next-seo";
 import { MarkdownStatic } from "./MarkdownStatic";
 import { useCart } from "./cart/CartContext";
@@ -15,7 +14,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const cart = useCart();
   const rating = calcAverageRating(product.reviews);
   return (
-    <ProductsLayout>
+    <>
       <NextSeo
         title={product.name}
         description={product.description}
@@ -32,48 +31,53 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         }}
       />
       <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-xl rounded-2xl border-1 py-4">
-            <Image
-              alt={product.name}
-              src={ product.images.length > 0 ? product.images[0].url : "placeholder-product-details.svg"}
-              layout="responsive"
-              width={product.images[0]?.width ?? 1}
-              height={product.images[0]?.height ?? 1}
-              className="w-full rounded-xl object-contain"
-            />
-      
-              <div className="grid grid-cols-2 gap-4 lg:mt-4">
-                {product.images.length > 1 ? 
-                  product.images.slice(1).map((i) => {
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-1 bg-white shadow-xl rounded-2xl border-1 py-4">
+          <Image
+            alt={product.name}
+            src={
+              product.images.length > 0
+                ? product.images[0].url
+                : "placeholder-product-details.svg"
+            }
+            layout="responsive"
+            width={product.images[0]?.width ?? 1}
+            height={product.images[0]?.height ?? 1}
+            className="w-full rounded-xl object-contain"
+          />
+
+          <div className="grid grid-cols-2 gap-4 lg:mt-4">
+            {product.images.length > 1
+              ? product.images.slice(1).map((i) => {
                   return (
-                  <Image
-                    key={i.id}
-                    alt={product.name}
-                    src={i.url}
-                    layout="responsive"
-                    width={i.width ?? 1}
-                    height={i.height ?? 1}
-                    className="aspect-square w-full rounded-xl object-contain"
-                  />
+                    <Image
+                      key={i.id}
+                      alt={product.name}
+                      src={i.url}
+                      layout="responsive"
+                      width={i.width ?? 1}
+                      height={i.height ?? 1}
+                      className="aspect-square w-full rounded-xl object-contain"
+                    />
                   );
-                }) : Array(4)
+                })
+              : Array(4)
                   .fill(1)
                   .map((_, i) => {
                     return (
                       <Image
-                      key={i}
-                      alt={product.name+i} 
-                      src={product.images[0].url}
-                      layout="responsive"
-                      width={product.images[0].width ?? 1}
-                      height={product.images[0].height ?? 1}
-                      className="aspect-square w-full rounded-xl object-contain"
-                    />
+                        key={i}
+                        alt={product.name + i}
+                        src={product.images[0].url}
+                        layout="responsive"
+                        width={product.images[0].width ?? 1}
+                        height={product.images[0].height ?? 1}
+                        className="aspect-square w-full rounded-xl object-contain"
+                      />
                     );
                   })}
-              </div>
           </div>
-    
+        </div>
+
         <div className="sticky top-3">
           {product.collections.length > 0 && (
             <span className="inline-block bg-indigo-200 text-indigo-800 px-2 rounded-full ">
@@ -173,6 +177,6 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           </form>
         </div>
       </div>
-    </ProductsLayout>
+    </>
   );
 };
